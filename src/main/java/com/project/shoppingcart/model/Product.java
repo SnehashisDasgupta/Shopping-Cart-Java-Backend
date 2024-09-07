@@ -11,7 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Product {
@@ -33,4 +32,14 @@ public class Product {
     //'orphanRemoval = true'= ensures that if an Image is removed from the images list (but the Product entity is still in existence), the Image entity will also be removed from the database.
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images;
+
+
+    public Product(String name, String brand, BigDecimal price, int inventory, String description, Category category) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.inventory = inventory;
+        this.description = description;
+        this.category = category;
+    }
 }
